@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.*;
 import ru.netology.CreditAccount;
+import ru.netology.SimpleAccount;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,20 +23,13 @@ public class CreditAccountTest {
         boolean result = creditAccount.pay(1000);
         assertEquals(true, result);
     }
-
     @Test
-    void shouldThrowException() {
-        Throwable exception = assertThrows(UnsupportedOperationException.class, () -> {
-            throw new UnsupportedOperationException("Not supported");
-        });
-        assertEquals("Not supported", exception.getMessage());
-    }
+    void ckeckAcc() {
+        SimpleAccount simpleAccount = new SimpleAccount(5000);
+        CreditAccount creditAccount = new CreditAccount(2000, 2000);
+        assertNotNull(creditAccount);
+        assertEquals(true, creditAccount.transfer(simpleAccount, 2000));
 
-    @Test
-    void falseCheck() {
-        long balance = 3000;
-        assertFalse(balance < 2000);
-        System.out.println("Too much");
     }
 }
 
